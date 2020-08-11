@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import PostList from "../PostList";
+import PostDetails from "../../components/PostDetails";
 import styles from "./App.module.scss";
 import { getPosts } from "../../redux/actions/postsActions";
 
 function App() {
+  const { selectedPost } = useSelector((state) => state.posts, shallowEqual);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -14,7 +16,7 @@ function App() {
   return (
     <div className={styles.container}>
       <div className={styles.details}>
-        <h2>Post Details</h2>
+        <PostDetails selectedPost={selectedPost} />
       </div>
       <div className={styles.posts}>
         <PostList />

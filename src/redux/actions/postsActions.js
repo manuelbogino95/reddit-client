@@ -4,6 +4,7 @@ import {
   GET_POSTS_REJECTED,
   DISMISS_POST,
   DISMISS_ALL_POSTS,
+  SELECT_POST,
 } from "../constants/postsConstants";
 import { getPostsApi } from "../../api";
 
@@ -28,6 +29,11 @@ export const dismissPost = (id) => ({
 
 export const dismissAllPosts = () => ({
   type: DISMISS_ALL_POSTS,
+});
+
+export const selectPost = (post) => ({
+  type: SELECT_POST,
+  payload: post,
 });
 
 export const getPosts = (page) => {

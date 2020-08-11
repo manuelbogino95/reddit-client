@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import styles from "./PostList.module.scss";
 import Post from "../../components/Post";
 import Loader from "../../components/Loader";
@@ -7,10 +7,14 @@ import {
   getPosts,
   dismissPost,
   dismissAllPosts,
+  selectPost,
 } from "../../redux/actions/postsActions";
 
 const PostList = () => {
-  const { children, before, after } = useSelector((state) => state.posts.posts);
+  const { children, before, after } = useSelector(
+    (state) => state.posts.posts,
+    shallowEqual
+  );
   const { isFetching } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
 
@@ -28,6 +32,10 @@ const PostList = () => {
 
   const dismissAllPostsHandler = () => {
     dispatch(dismissAllPosts());
+  };
+
+  const selectPostHandler = (post) => {
+    dispatch(selectPost(post));
   };
 
   return (
@@ -58,6 +66,7 @@ const PostList = () => {
               key={post.data.id}
               post={post}
               dismissPostHandler={dismissPostHandler}
+              selectPostHandler={selectPostHandler}
             />
           ))
         )}

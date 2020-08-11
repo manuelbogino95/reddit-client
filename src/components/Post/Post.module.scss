@@ -17,6 +17,14 @@
   justify-content: space-between;
 }
 
+.read {
+  color: $color-black;
+}
+
+.unread {
+  color: $color-blue;
+}
+
 .author {
   font-size: 1.2em;
 }
