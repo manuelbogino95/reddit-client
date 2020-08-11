@@ -1,0 +1,56 @@
+@import "../../styles/colors";
+
+.card {
+  border: 1px solid $color-gray;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  padding: 10px;
+
+  > div {
+    margin-bottom: 15px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.author {
+  font-size: 1.2em;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > div {
+    display: flex;
+    align-items: center;
+
+    > svg {
+      font-size: 1.3em;
+      margin-right: 5px;
+      color: $color-orange;
+    }
+
+    > span {
+      text-align: center;
+    }
+  }
+
+  > span {
+    color: $color-orange;
+  }
+}

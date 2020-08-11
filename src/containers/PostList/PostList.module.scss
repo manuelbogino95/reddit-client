@@ -1,0 +1,13 @@
+h2 {
+  text-align: center;
+}
+
+.navigationContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list {
+  max-height: 100vh;
+  overflow: scroll;
+}

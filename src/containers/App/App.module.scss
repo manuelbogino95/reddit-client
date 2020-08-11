@@ -1,0 +1,35 @@
+@import "../../styles/variables";
+@import "../../styles//colors";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+}
+
+.posts {
+  background-color: $color-black;
+  color: $color-white;
+}
+
+@media only screen and (min-width: map-get($screen-breakpoints, lg)) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    > div {
+      padding: 10px;
+    }
+  }
+
+  .details {
+    order: 2;
+    width: 70%;
+  }
+
+  .posts {
+    width: 30%;
+  }
+}

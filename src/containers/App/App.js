@@ -1,19 +1,24 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import PostList from "../PostList";
+import styles from "./App.module.scss";
 import { getPosts } from "../../redux/actions/postsActions";
 
 function App() {
   const dispatch = useDispatch();
-  const { children } = useSelector((state) => state.posts.posts);
 
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
 
   return (
-    <div>
-      {children &&
-        children.map((post) => <p key={post.data.id}>{post.data.name}</p>)}
+    <div className={styles.container}>
+      <div className={styles.details}>
+        <h2>Post Details</h2>
+      </div>
+      <div className={styles.posts}>
+        <PostList />
+      </div>
     </div>
   );
 }
