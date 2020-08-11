@@ -37,7 +37,7 @@ const reducer = (state = initialState, action) => {
       const newPosts = state.posts.children.filter(
         (post) => post.data.id !== action.payload
       );
-      console.log("state", state.posts);
+
       const selectedPost =
         state.selectedPost.data && state.selectedPost.data.id === action.payload
           ? {}

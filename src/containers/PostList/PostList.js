@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import styles from "./PostList.module.scss";
 import Post from "../../components/Post";
 import Loader from "../../components/Loader";
@@ -60,15 +61,23 @@ const PostList = () => {
         {isFetching ? (
           <Loader />
         ) : (
-          children &&
-          children.map((post) => (
-            <Post
-              key={post.data.id}
-              post={post}
-              dismissPostHandler={dismissPostHandler}
-              selectPostHandler={selectPostHandler}
-            />
-          ))
+          <TransitionGroup>
+            {children &&
+              children.map((post) => (
+                <CSSTransition
+                  key={post.data.id}
+                  classNames="transition"
+                  timeout={500}
+                >
+                  <Post
+                    key={post.data.id}
+                    post={post}
+                    dismissPostHandler={dismissPostHandler}
+                    selectPostHandler={selectPostHandler}
+                  />
+                </CSSTransition>
+              ))}
+          </TransitionGroup>
         )}
       </div>
     </div>
