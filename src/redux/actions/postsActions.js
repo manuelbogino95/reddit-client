@@ -19,11 +19,11 @@ const getPostsRejected = (error) => ({
   payload: error,
 });
 
-export const getPosts = () => {
+export const getPosts = (page) => {
   return (dispatch) => {
     dispatch(getPostsPending());
 
-    getPostsApi()
+    getPostsApi(page)
       .then((data) => dispatch(getPostsFulfilled(data)))
       .catch((error) => dispatch(getPostsRejected(error)));
   };
