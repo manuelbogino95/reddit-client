@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Post.module.scss";
 
-const Post = ({ post }) => {
+const Post = ({ post, dismissPostHandler }) => {
   return (
     <div className={styles.card}>
       <div className={styles.header}>
@@ -22,7 +22,7 @@ const Post = ({ post }) => {
         <FontAwesomeIcon icon={faChevronRight} />
       </div>
       <div className={styles.footer}>
-        <div>
+        <div onClick={() => dismissPostHandler(post.data.id)}>
           <FontAwesomeIcon icon={faTimesCircle} />
           <span>Dismiss Post</span>
         </div>

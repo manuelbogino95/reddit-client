@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./PostList.module.scss";
 import Post from "../../components/Post";
 import Loader from "../../components/Loader";
-import { getPosts } from "../../redux/actions/postsActions";
+import { getPosts, dismissPost } from "../../redux/actions/postsActions";
 
 const PostList = () => {
   const { children, before, after } = useSelector((state) => state.posts.posts);
@@ -16,6 +16,10 @@ const PostList = () => {
 
   const onNextHandler = () => {
     dispatch(getPosts({ after }));
+  };
+
+  const dismissPostHandler = (id) => {
+    dispatch(dismissPost(id));
   };
 
   return (
@@ -34,7 +38,13 @@ const PostList = () => {
           <Loader />
         ) : (
           children &&
-          children.map((post) => <Post key={post.data.id} post={post} />)
+          children.map((post) => (
+            <Post
+              key={post.data.id}
+              post={post}
+              dismissPostHandler={dismissPostHandler}
+            />
+          ))
         )}
       </div>
     </div>

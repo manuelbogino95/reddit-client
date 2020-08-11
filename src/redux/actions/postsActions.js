@@ -2,6 +2,7 @@ import {
   GET_POSTS_PENDING,
   GET_POSTS_FULFILLED,
   GET_POSTS_REJECTED,
+  DISMISS_POST,
 } from "../constants/postsConstants";
 import { getPostsApi } from "../../api";
 
@@ -17,6 +18,11 @@ const getPostsFulfilled = (data) => ({
 const getPostsRejected = (error) => ({
   type: GET_POSTS_REJECTED,
   payload: error,
+});
+
+export const dismissPost = (id) => ({
+  type: DISMISS_POST,
+  payload: id,
 });
 
 export const getPosts = (page) => {
