@@ -4,21 +4,32 @@ h2 {
   text-align: center;
 }
 
+button {
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+  outline: none;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.dismissAllButton {
+  border: none;
+  width: 100%;
+  margin-bottom: 15px;
+  background-color: $color-orange;
+  color: $color-white;
+}
+
 .navigationContainer {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
 
   > button {
-    background-color: $color-black;
     border: 1px solid;
-    border-radius: 4px;
+    background-color: $color-black;
     color: $color-white;
-    cursor: pointer;
-    font-size: 1.1em;
-    outline: none;
-    padding: 10px;
-    text-decoration: none;
 
     &:disabled {
       visibility: hidden;

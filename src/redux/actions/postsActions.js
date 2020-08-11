@@ -3,6 +3,7 @@ import {
   GET_POSTS_FULFILLED,
   GET_POSTS_REJECTED,
   DISMISS_POST,
+  DISMISS_ALL_POSTS,
 } from "../constants/postsConstants";
 import { getPostsApi } from "../../api";
 
@@ -23,6 +24,10 @@ const getPostsRejected = (error) => ({
 export const dismissPost = (id) => ({
   type: DISMISS_POST,
   payload: id,
+});
+
+export const dismissAllPosts = () => ({
+  type: DISMISS_ALL_POSTS,
 });
 
 export const getPosts = (page) => {

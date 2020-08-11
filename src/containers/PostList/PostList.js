@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./PostList.module.scss";
 import Post from "../../components/Post";
 import Loader from "../../components/Loader";
-import { getPosts, dismissPost } from "../../redux/actions/postsActions";
+import {
+  getPosts,
+  dismissPost,
+  dismissAllPosts,
+} from "../../redux/actions/postsActions";
 
 const PostList = () => {
   const { children, before, after } = useSelector((state) => state.posts.posts);
@@ -22,9 +26,20 @@ const PostList = () => {
     dispatch(dismissPost(id));
   };
 
+  const dismissAllPostsHandler = () => {
+    dispatch(dismissAllPosts());
+  };
+
   return (
     <div>
       <h2>Reddit Posts</h2>
+      <button
+        type="button"
+        className={styles.dismissAllButton}
+        onClick={dismissAllPostsHandler}
+      >
+        Dismiss All
+      </button>
       <div className={styles.navigationContainer}>
         <button type="button" disabled={!before} onClick={onPreviousHandler}>
           Prev

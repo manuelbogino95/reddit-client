@@ -3,6 +3,7 @@ import {
   GET_POSTS_FULFILLED,
   GET_POSTS_REJECTED,
   DISMISS_POST,
+  DISMISS_ALL_POSTS,
 } from "../constants/postsConstants";
 
 const initialState = {
@@ -38,6 +39,11 @@ const reducer = (state = initialState, action) => {
         posts: { ...state.posts, children: newPosts },
       };
     }
+    case DISMISS_ALL_POSTS:
+      return {
+        ...state,
+        posts: [],
+      };
     default:
       return state;
   }
